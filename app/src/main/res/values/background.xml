@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="colorPrimary">#008577</drawable>
+    <drawable name="colorPrimaryDark">#00574B</drawable>
+    <drawable name="colorAccent">#D81B60</drawable>
+    <drawable name="field1">#f1ffc9</drawable>
+    <drawable name="field2">#a6ceff</drawable>
+    <drawable name="field3">#95e1d9</drawable>
+</resources>

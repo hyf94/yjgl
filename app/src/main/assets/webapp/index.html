@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <title>title</title>
+
+    <style>
+        p { margin: 10px; }
+    </style>
+</head>
+<body>
+<div class="views">
+    <button onclick="test()">test</button>
+    <button onclick="threadTest()">threadTest</button>
+    <button onclick="speak()">speak</button>
+    <button onclick="stopSpeak()">stopSpeak</button>
+    <button onclick="callAudio()">callAudio</button>
+    <button onclick="callVideo()">callVideo</button>
+    <button onclick="startActivity('talkback')">TalkBackActivity</button>
+    <button onclick="startActivity('call')">CallActivity</button>
+
+    <input type="file" />
+
+    <p id="result" style="background: #AAFFFF">
+        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+    </p>
+
+    <img id="img" width="200px" height="300px" alt="图片预览区">
+    <br>
+    <input type="file" id="pic" accept="image/*" onchange="previewPhoto(this.id, 'img');"/>
+</div>
+
+<script src="JSBridge.js" type="text/javascript"></script>
+<script type="text/javascript">
+    var test = function() {
+        JSBridge.call('test','test',{'msg':'Hello JSBridge Async'}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+    var threadTest = function() {
+        JSBridge.call('test','threadTest',{'msg':'thread test'}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+    var speak = function() {
+        JSBridge.call('gqt','speak',{'msg':'speak'}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+
+    var stopSpeak = function() {
+        JSBridge.call('gqt','stopSpeak',{'msg':'stopSpeak'}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+
+     var callAudio = function() {
+        JSBridge.call('gqt','call',{'number':'800013','type':'audio'}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+
+    var callVideo = function() {
+        JSBridge.call('gqt','call',{'number':'800013','type':'video'}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+
+     var startActivity = function(activity) {
+        JSBridge.call('gqt','start',{'activity':activity}, function(result){
+        document.getElementById("result").innerHTML = JSON.stringify(result);
+    } )
+    }
+
+    function previewPhoto(sourceId, targetId) {
+            var url;
+            if (navigator.userAgent.indexOf("MSIE") >= 1) { // IE
+                url = document.getElementById(sourceId).value;
+            } else if(navigator.userAgent.indexOf("Firefox") > 0) { // Firefox
+                url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+            } else if(navigator.userAgent.indexOf("Chrome") > 0) { // Chrome
+                url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+            }  else if(navigator.userAgent.indexOf("Opera") > 0
+                || navigator.userAgent.indexOf("Oupeng") > 0) { // Oupeng
+                url = window.URL.createObjectURL(document.getElementById(sourceId).files.item(0));
+            } else {
+                url = "flower_err.jpg";
+            }
+
+            window.alert("address:" + url);
+
+            var imgPre = document.getElementById(targetId);
+            imgPre.src = url;
+        }
+</script>
+</body>
+</html>

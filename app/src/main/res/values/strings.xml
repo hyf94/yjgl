@@ -1,0 +1,119 @@
+<resources>
+    <string name="app_name">yjgl</string>
+
+    <!--测试页-->
+    <string name="test_btn1">Audio Dial</string>
+    <string name="test_btn2">Video Dial</string>
+    <string name="test_btn3">Go Talk</string>
+
+    <!--对讲页-->
+    <string name="ptt_grp">临时对讲</string>
+    <string name="make_temp_group_call">发起临时对讲</string>
+
+    <!--视频页-->
+    <string name="video_title">视频通话</string>
+    <string name="video_he_number">电话号码</string>
+    <string name="video_switch">切换相机</string>
+    <string name="video_rotate">旋转画面</string>
+    <string name="video_hangup">结束通话</string>
+    <string name="video_me_text">我的画面</string>
+    <string name="video_he_text">对方画面</string>
+
+    <!--语音页-->
+    <string name="audio_title">语音电话</string>
+    <string name="audio_hangup">结束通话</string>
+    <string name="audio_silence">静音</string>
+    <string name="audio_loud">扬声器</string>
+
+
+    <!--登录页-->
+    <string name="server_ip">服务器地址</string>
+    <string name="login">登录</string>
+    <string name="user_name">用户名</string>
+    <string name="user_pwd">密码</string>
+    <string name="loginning">正在登录…</string>
+    <string name="userName_is_blank">用户名不能为空！</string>
+    <string name="pwd_is_blank">密码不能为空！</string>
+    <string name="wrong_pwd">密码错误</string>
+    <string name="network_exception">网络异常,请检查网络</string>
+    <string name="port">端口</string>
+    <string name="port_is_blank">端口不能为空！</string>
+    <string name="server_ip_wrong">服务器地址输入错误</string>
+    <string name="userName_not_exist">用户名不存在</string>
+    <string name="timeout">注册超时，请检查服务器地址和端口是否正确</string>
+    <string name="wrong_name_or_pwd">用户名或密码错误</string>
+
+
+    <!-- 短消息 -->
+
+    <string name="delete_all_message">清空所有信息</string>
+    <string name="new_message">写消息</string>
+    <string name="to">请输入号码</string>
+    <string name="select_contact">选择联系人</string>
+    <string name="no_conversations">无信息记录</string>
+    <string name="invalid_char">号码中含有无效字符</string>
+    <string name="forward">转发信息</string>
+
+    <!-- 通话 -->
+
+    <string name="recents">通话记录</string>
+    <string name="week_ago">周前</string>
+    <string name="weeks_ago">周前</string>
+    <string name="day_ago">天前</string>
+    <string name="days_ago">天前</string>
+    <string name="hour_ago">小时前</string>
+    <string name="hours_ago">小时前</string>
+    <string name="minute_ago">分钟前</string>
+    <string name="minutes_ago">分钟前</string>
+    <string name="second_ago">秒前</string>
+    <string name="seconds_ago">秒前</string>
+    <string name="enter_number">输入号码</string>
+    <string name="delete_call_notify">确定要删除该条通话记录吗？</string>
+    <string name="delete_allCall_notify">确定要删除所有通话记录吗？</string>
+    <string name="ve_service_not">暂未开通视频业务</string>
+    <string name="vc_service_not">暂未开通语音业务</string>
+    <string name="vedio_calling_notify">已存在一路通话</string>
+    <string name="version_unsupported">不支持4.1以下版本</string>
+
+    <!-- 几个多次使用的 -->
+
+    <string name="ok">确定</string>
+    <string name="ok_switch">切换</string>
+    <string name="ok_know">知道了</string>
+    <string name="cancel">取消</string>
+    <string name="cancel_switch">忽略</string>
+    <string name="information">提示</string>
+    <string name="delete">删除</string>
+    <string name="delete_contact">删除该联系人</string>
+    <string name="delete_log">删除该条通话记录</string>
+    <string name="delete_ok">确定</string>
+    <string name="delete_message">清空会话</string>
+    <string name="delete_message_one">删除信息</string>
+    <string name="delete_all_contact">删除全部联系人</string>
+    <string name="delete_all_log">清空通话记录</string>
+    <string name="delete_all_ok">确定</string>
+    <string name="add_contact">添加联系人</string>
+    <string name="name">姓名</string>
+    <string name="number">号码</string>
+    <string name="save">保存</string>
+    <string name="back">返回</string>
+    <string name="back_talk">对讲</string>
+    <string name="no_record">无对话记录</string>
+    <string name="no_record_upload">无拍传记录</string>
+    <string name="inbox">收件箱</string>
+    <string name="outbox">发件箱</string>
+    <string name="view_mms">查看消息</string>
+    <string name="input_message">请输入信息</string>
+    <string name="input_message_text">请输入信息内容</string>
+    <string name="send">发送</string>
+    <string name="send_t">发送给：</string>
+    <string name="audio_calling">正在语音呼叫</string>
+    <string name="video_calling">正在视频呼叫</string>
+    <string name="number_not_exist">号码不存在，无法建立呼叫。</string>
+    <string name="options">信息选项</string>
+    <string name="options_one">选项</string>
+    <string name="no_selected">没选中联系人</string>
+    <string name="add_persons">添加成员</string>
+    <string name="search_persons">添加成员</string>
+    <string name="input_tmpgrp_tip">名称不能为空！</string>
+</resources>
