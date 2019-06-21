@@ -6,16 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".activity.CallActivity">
 
-    <FrameLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:orientation="vertical"
         android:background="@color/font_color">
 
         <ListView
             android:id="@+id/call_txl_list"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="50.0dip">
+            android:layout_height="0dp"
+            android:layout_weight="1">
 
         </ListView>
 
@@ -45,8 +46,6 @@
                 android:id="@+id/search_edittext"
                 android:layout_width="0dip"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="8.0dip"
-                android:layout_marginRight="8.0dip"
                 android:layout_weight="1.0"
                 android:gravity="center"
                 android:text="点击拨号盘进行通话"
@@ -60,5 +59,5 @@
                 android:paddingRight="15dip"
                 android:src="@drawable/keyboardup_release" />
         </LinearLayout>
-    </FrameLayout>
+    </LinearLayout>
 </LinearLayout>

@@ -7,19 +7,30 @@ import android.os.Bundle;
 import android.text.InputFilter;
 import android.text.InputType;
 import android.text.Selection;
+import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.gqt.bean.CallType;
+import com.gqt.bean.GrpMember;
+import com.gqt.bean.PttGroup;
+import com.gqt.customgroup.GroupInfoItem;
 import com.gqt.helper.GQTHelper;
 import com.gqt.video.VideoManagerService;
 import com.sucsoft.yjgl.R;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class CallActivity extends BaseActivity implements View.OnClickListener{
 
@@ -43,6 +54,7 @@ public class CallActivity extends BaseActivity implements View.OnClickListener{
 
     private ImageButton videoCall;
     private View keyboardView;
+    private ListView call_txl_list;
     protected boolean numTxtCursor;
 
     ImageView keyboard_img;
@@ -54,11 +66,26 @@ public class CallActivity extends BaseActivity implements View.OnClickListener{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_call);
+        getSupportActionBar().setTitle("拨号");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
          //初始化布局
         InitCallScreen();
         initKeyBoard();
         initMenuViews();
+        call_txl_list = findViewById(R.id.call_txl_list);
+        //获取当前组
+       PttGroup grop= GQTHelper.getInstance().getGroupEngine().getCurGrp();
+        final List<GrpMember> memberList = GQTHelper.getInstance().getGroupEngine().getGrpMembers(grop);
+        TxlAdapter adapter = new TxlAdapter(this,memberList);
+        Log.i("CallActivity___",memberList.size()+"---");
+        call_txl_list.setAdapter(adapter);
+        call_txl_list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                numTxt.setText(memberList.get(i).getMemberNum());
+            }
+        });
         keyboard_img = findViewById(R.id.keyboard_img);
         keyboard_img.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -163,7 +190,7 @@ public class CallActivity extends BaseActivity implements View.OnClickListener{
         btndel.setOnClickListener(this);
         keyboardView = findViewById(R.id.call_keyboard);
         keyboardView.setOnClickListener(this);
-        keyboardView.setVisibility(View.INVISIBLE);
+//        keyboardView.setVisibility(View.INVISIBLE);
 
     }
 
@@ -222,48 +249,21 @@ public class CallActivity extends BaseActivity implements View.OnClickListener{
             case R.id.pnine:
                 downKey("9");
                 break;
-
             case R.id.p0:
                 downKey("0");
                 break;
-
             case R.id.pmi:
                 downKey("*");
                 break;
-
             case R.id.pjing:
                 downKey("#");
                 numberString = numTxt.getText().toString().trim();
                 break;
-
-
             case R.id.video_call:
                 numberString = numTxt.getText().toString().trim();
-
                 if(numberString != null && !numberString.equals("")){
                     GQTHelper.getInstance().getCallEngine().makeCall(CallType.VIDEOCALL, numberString);
-//                    VideoManagerService.getDefault().showVideoSelectDialog(CallActivity.this, new VideoManagerService.VideoSelectDialogBuilder.OnVideoSelectItemClickListener() {
-//
-//                        @Override
-//                        public void onVideoConnectionClicked() {
-////                            VideoSizeSetting.getVideoSizeSetting(VideoManagerService.ACTION_VIDEO_CALL).setVideoSize();
-//                            GQTHelper.getInstance().getCallEngine().makeCall(CallType.VIDEOCALL, numberString);
-//                        }
-//
-//                        @Override
-//                        public void onVideoUploadClicked() {
-////                            VideoSizeSetting.getVideoSizeSetting(VideoManagerService.ACTION_VIDEO_UPLOAD).setVideoSize();
-//                            GQTHelper.getInstance().getCallEngine().makeCall(CallType.UPLOADVIDEO, numberString);
-//                        }
-//
-//                        @Override
-//                        public void onVideoMonitorClicked() {
-////                            VideoSizeSetting.getVideoSizeSetting(VideoManagerService.ACTION_VIDEO_MONITOR).setVideoSize();
-//                            GQTHelper.getInstance().getCallEngine().makeCall(CallType.MONITORVIDEO, numberString);
-//                        }
-//                    }, "");
                 }
-
                 break;
             case R.id.pphone:// 移动电话
                 numberString = numTxt.getText().toString().trim();
@@ -299,6 +299,56 @@ public class CallActivity extends BaseActivity implements View.OnClickListener{
             numTxt.setCursorVisible(false);
             numTxtCursor = false;
             numTxt.setGravity(Gravity.LEFT|Gravity.CENTER_VERTICAL);//GQT英文版 2014-8-28
+        }
+    }
+
+    class TxlAdapter extends BaseAdapter{
+        private List<GrpMember> list;
+        private Context context;
+        private  LayoutInflater mlayoutInflater;
+
+        public TxlAdapter (Context context,  List<GrpMember> list) {
+            this.context = context;
+            this.list = list;
+            //利用LayoutInflate把控件所在的布局文件加载到当前类中
+            mlayoutInflater = LayoutInflater.from(context);
+        }
+        @Override
+        public int getCount() {
+            return list.size();
+        }
+
+        @Override
+        public Object getItem(int i) {
+            return list.get(i);
+        }
+
+        @Override
+        public long getItemId(int i) {
+            return i;
+        }
+
+        @Override
+        public View getView(int i, View view, ViewGroup viewGroup) {
+            ViewHolder holder = null;
+            if (view == null) {
+                view = mlayoutInflater.inflate(R.layout.txl_list_item, null);
+                holder = new ViewHolder();
+                holder.textView_name = view.findViewById(R.id.txl_item_name);
+                holder.textView_number = view.findViewById(R.id.txl_item_number);
+                view.setTag(holder);
+            } else {
+                holder = (ViewHolder) view.getTag();
+            }
+
+            holder.textView_name.setText(list.get(i).getMemberName());
+            holder.textView_number.setText(list.get(i).getMemberNum());
+            return view;
+        }
+        //写一个静态的class,把layout_grid_item的控件转移过来使用
+        class ViewHolder {
+            TextView textView_name;
+            TextView textView_number;
         }
     }
 }

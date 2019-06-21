@@ -54,13 +54,13 @@
         <activity android:name=".activity.VideoActivity" />
         <activity android:name=".activity.GQTActivity" />
         <activity android:name=".activity.SelectPersonsActivity" />
+        <activity android:name=".activity.CallActivity" />
 
         <receiver android:name="com.gqt.sipua.ui.HeartBeatReceiver" />
-
         <service android:name="com.gqt.sipua.ui.RegisterService" />
         <service android:name="com.gqt.video.SensorCheckService" />
 
-        <activity android:name=".activity.CallActivity"></activity>
+
     </application>
 
 </manifest>

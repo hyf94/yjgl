@@ -62,6 +62,8 @@ public class TalkBackActivity extends BaseActivity implements GroupCallListener 
         setContentView(R.layout.activity_talkback);
         super.onCreate(savedInstanceState);
         groupEngine = GQTHelper.getInstance().getGroupEngine();    //获取对讲模块实例
+        getSupportActionBar().setTitle("对讲");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         initView();
     }
 

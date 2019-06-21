@@ -5,6 +5,9 @@ import android.os.Handler;
 import android.util.Log;
 
 import com.gqt.bean.CallListener;
+import com.sucsoft.yjgl.activity.AudioActivity;
+import com.sucsoft.yjgl.activity.VideoActivity;
+import com.sucsoft.yjgl.core.AppManager;
 
 
 public class VideoCallListener implements CallListener {
@@ -37,6 +40,10 @@ public class VideoCallListener implements CallListener {
 
     @Override
     public void onCallIDLE() {
+        if (AppManager.getAppManager().currentActivity().getClass()==VideoActivity.class||AppManager.getAppManager().currentActivity().getClass()==AudioActivity.class) {
+            Log.i(TAG, "退出activity");
+            AppManager.getAppManager().finishActivity();
+        }
         Log.i(TAG, "空闲状态（挂断）: ");
         handler.sendMessage(handler.obtainMessage(0, -1, -1, ""));
     }

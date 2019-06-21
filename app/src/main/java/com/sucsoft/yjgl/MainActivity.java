@@ -16,13 +16,11 @@ import android.support.v7.app.ActionBar;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.KeyEvent;
-import android.webkit.JavascriptInterface;
 import android.widget.Toast;
 
 import com.sucsoft.yjgl.activity.BaseActivity;
 import com.sucsoft.yjgl.core.AppManager;
 import com.sucsoft.yjgl.core.jsbridge.JSBridge;
-import com.sucsoft.yjgl.core.jsbridge.JSBridgeWebChromeClient;
 import com.sucsoft.yjgl.core.webview.X5WebView;
 import com.sucsoft.yjgl.util.gqt.GQTRegister;
 import com.sucsoft.yjgl.x5webview.Register;
