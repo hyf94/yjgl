@@ -53,5 +53,19 @@ public class GQTImpl implements IBridge{
     }
 
 
+    public static void registerGQT(WebView webView, JSONObject param, final Callback callback){
+        GQTRegister gqtRegister;
+        String IP = "39.106.217.160";
+        int PORT = 7080;
+
+        String username = param.optString("username");
+        String password = param.optString("password");
+        gqtRegister = new GQTRegister(AppManager.getAppManager().currentActivity());
+        gqtRegister.init(username, password, IP, PORT);
+    }
+
+
+
+
 
 }

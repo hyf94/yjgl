@@ -76,8 +76,8 @@ public class MainActivity extends BaseActivity {
         //获取权限
         requestPermissions();
 
-        gqtRegister = new GQTRegister(this);
-        gqtRegister.init("800011", "800011", IP, PORT);
+//        gqtRegister = new GQTRegister(this);
+//        gqtRegister.init("800011", "800011", IP, PORT);
         
     }
 

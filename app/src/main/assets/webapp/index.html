@@ -21,6 +21,7 @@
     <button onclick="stopSpeak()">stopSpeak</button>
     <button onclick="callAudio()">callAudio</button>
     <button onclick="callVideo()">callVideo</button>
+    <button onclick="registerGQT(800011,800011)">register</button>
     <button onclick="startActivity('talkback')">TalkBackActivity</button>
     <button onclick="startActivity('call')">CallActivity</button>
 
@@ -76,6 +77,13 @@
         document.getElementById("result").innerHTML = JSON.stringify(result);
     } )
     }
+
+    var registerGQT = function(username,password) {
+        JSBridge.call('gqt','registerGQT',{'username':username,'password':password}, function(result){
+            document.getElementById("result").innerHTML = JSON.stringify(result);
+        } )
+    }
+
 
     function previewPhoto(sourceId, targetId) {
             var url;
