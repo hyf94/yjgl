@@ -1,10 +1,10 @@
 package com.sucsoft.yjgl.activity;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.TextView;
 
 import com.gqt.bean.CallType;
@@ -19,6 +19,7 @@ public class AudioActivity extends BaseActivity implements View.OnClickListener 
     private String number;
     private Button hangup_button, silence_button, loud_button;
     private TextView text;
+    private Chronometer elapsedTime;
 
     private boolean isLoud = false;
 
@@ -36,11 +37,14 @@ public class AudioActivity extends BaseActivity implements View.OnClickListener 
         silence_button = findViewById(R.id.audio_silence);
         loud_button = findViewById(R.id.audio_loud);
         text = findViewById(R.id.audio_textview);
+        elapsedTime = findViewById(R.id.elapsedTime);
 
         hangup_button.setOnClickListener(this);
         silence_button.setOnClickListener(this);
         loud_button.setOnClickListener(this);
         text.setText(number);
+
+        elapsedTime.start();
 
         callEngine = GQTHelper.getInstance().getCallEngine();
     }
@@ -49,6 +53,7 @@ public class AudioActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()){
             case R.id.audio_hangup:
+                elapsedTime.stop();
                 callEngine.hangupCall(CallType.VOICECALL, number);
                 break;
             case R.id.audio_silence:

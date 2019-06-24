@@ -22,7 +22,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener 
     private SurfaceView meView, heView;
     private CallEngine callEngine;
     private String number;
-    private int cameraOrientation = 0;
+    private int cameraOrientation = 180;
     private boolean isCameraFront = false;
 
     @Override
@@ -115,6 +115,7 @@ public class VideoActivity extends BaseActivity implements View.OnClickListener 
             case R.id.video_rotate:
                 Log.i("M4", "video_rotate: ------------------------------------");
                 cameraOrientation = cameraOrientation + 90 == 360 ? 0 : cameraOrientation + 90;
+                Log.i("cameraOrientation：",cameraOrientation+"");
                 callEngine.setDisplayOrientation(cameraOrientation);
                 break;
         }
