@@ -63,6 +63,7 @@ public class GQTImpl implements IBridge{
         String password = param.optString("password");
         gqtRegister = new GQTRegister(AppManager.getAppManager().currentActivity());
         gqtRegister.init(username, password, IP, PORT);
+//        gqtRegister.init("800013", "800013", "39.106.217.160", PORT);
     }
 
 
