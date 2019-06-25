@@ -9,6 +9,7 @@
     <color name="field3">#95e1d9</color>
 
     <color name="callback_bg">#e4e4e4</color>
+    <color name="callback_bg2">#f1f1f1</color>
     <color name="onLine">#FF0000</color>
     <color name="notOnLine">#ffffff</color>
     <color name="white">#ffffffff</color>
