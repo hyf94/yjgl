@@ -21,7 +21,7 @@
     <button onclick="stopSpeak()">stopSpeak</button>
     <button onclick="callAudio()">callAudio</button>
     <button onclick="callVideo()">callVideo</button>
-    <button onclick="registerGQT(800011,800011)">register</button>
+    <button onclick="registerGQT(8011,8011)">register</button>
     <button onclick="startActivity('talkback')">TalkBackActivity</button>
     <button onclick="startActivity('call')">CallActivity</button>
 
@@ -61,13 +61,13 @@
     }
 
      var callAudio = function() {
-        JSBridge.call('gqt','call',{'number':'800013','type':'audio'}, function(result){
+        JSBridge.call('gqt','call',{'number':'8013','type':'audio'}, function(result){
         document.getElementById("result").innerHTML = JSON.stringify(result);
     } )
     }
 
     var callVideo = function() {
-        JSBridge.call('gqt','call',{'number':'800013','type':'video'}, function(result){
+        JSBridge.call('gqt','call',{'number':'8013','type':'video'}, function(result){
         document.getElementById("result").innerHTML = JSON.stringify(result);
     } )
     }

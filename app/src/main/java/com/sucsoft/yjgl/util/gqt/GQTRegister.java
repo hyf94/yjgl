@@ -51,7 +51,7 @@ public class GQTRegister implements IAutoConfigListener,GroupCallListener {
         if (!(GQTUtils.isNetworkAvailable(context))) {
             showToast("网络不可用");
         } else {
-            int result = registerEngine.initRegisterInfo("800011", "800011", "39.106.217.160", 7080, "");
+            int result = registerEngine.initRegisterInfo(username, password, ip, port, "");
             handler.obtainMessage(2, result, 0).sendToTarget();
         }
     }
