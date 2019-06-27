@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">yjgl</string>
+    <string name="app_name">应急管理</string>
 
     <!--测试页-->
     <string name="test_btn1">Audio Dial</string>
