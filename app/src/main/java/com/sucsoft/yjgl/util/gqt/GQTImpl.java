@@ -1,7 +1,11 @@
 package com.sucsoft.yjgl.util.gqt;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.util.Log;
 
 import com.gqt.bean.CallType;
@@ -66,8 +70,19 @@ public class GQTImpl implements IBridge{
 //        gqtRegister.init("800013", "800013", "39.106.217.160", PORT);
     }
 
-
-
+    public static void callPhone(WebView webView, JSONObject param, final Callback callback){
+        String phoneNumber = param.optString("phoneNumber");
+        Uri data = Uri.parse(phoneNumber);
+        Intent intent = new Intent(Intent.ACTION_CALL,data);
+        AppManager.getAppManager().currentActivity().startActivity(intent);
+        if (ActivityCompat.checkSelfPermission(AppManager.getAppManager().currentActivity(), android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
+            AppManager.getAppManager().currentActivity().startActivity(intent);
+            //这个超连接,java已经处理了，webview不要处理
+        }else{
+            //申请权限
+            ActivityCompat.requestPermissions(AppManager.getAppManager().currentActivity(), new String[]{Manifest.permission.CALL_PHONE},1);
+        }
+    }
 
 
 }
