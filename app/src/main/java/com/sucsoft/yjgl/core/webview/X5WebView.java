@@ -39,7 +39,7 @@ public class X5WebView extends WebView {
 				String mobile = url.substring(url.lastIndexOf("/") + 1);
 				Log.e("mobile----------->",mobile);
 				Intent mIntent = new Intent(Intent.ACTION_CALL);
-				Uri data = Uri.parse(mobile);
+				Uri data = Uri.parse("tel:"+mobile);
 				mIntent.setData(data);
 				//Android6.0以后的动态获取打电话权限
 				if (ActivityCompat.checkSelfPermission(context, android.Manifest.permission.CALL_PHONE) == PackageManager.PERMISSION_GRANTED) {
